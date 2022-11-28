@@ -1,0 +1,20 @@
+---
+namespace:
+  name: staging
+
+service:
+  port: 7111
+
+image:
+  tag: '2.0'
+  pullPolicy: Always
+
+replicaCount: 3
+
+resources:
+  requests:
+    cpu: 300m
+    memory: 90mi
+  limits:
+    cpu: 500m
+    memory: 128Mi

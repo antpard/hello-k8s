@@ -5,9 +5,9 @@ metadata:
   labels:
     app: hello-k8s
   name: hello-k8s
-  namespace: default
+  namespace: {{ .Values.namespace.name }}
 spec:
-  replicas: 3
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: hello-k8s
@@ -22,10 +22,10 @@ spec:
         app: hello-k8s
     spec:
       containers:
-      - image: antpards/hello-k8s:1.0
-        imagePullPolicy: Always
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.imagePullPolicy }} 
         name: hello-k8s
+        ports:
+          - containerPort: {{ .Values.containerPort }}
         resources:
-          requests:
-            cpu: 50m
-            memory: 256Mi
+{{ toYaml . Values.resources | indent 12 }}
