@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: hello-k8s-deployment.yaml 
+    path: ./hello-k8s-deployment.yaml 
     repoURL: https://github.com/antpard/hello-k8s
     targetRevision: HEAD
   syncPolicy: {}
